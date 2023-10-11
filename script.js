@@ -167,7 +167,7 @@ function onMessageArrived(message) {
 }
 
 // Create a client instance
-const client = new Paho.MQTT.Client("mqtt.eclipseprojects.io", Number(80), "/mqtt", "LitterBoxController");
+const client = new Paho.MQTT.Client("mqtt.eclipseprojects.io", Number(443), "/mqtt", "LitterBoxController");
 
 // set callback handlers
 client.onConnectionLost = (responseObject) => {
@@ -177,4 +177,4 @@ client.onConnectionLost = (responseObject) => {
 client.onMessageArrived = onMessageArrived;
 
 // connect the client
-client.connect({onSuccess: onConnect});
+client.connect({onSuccess: onConnect, useSSL: true});
