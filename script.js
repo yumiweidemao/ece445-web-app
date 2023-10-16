@@ -158,7 +158,13 @@ function onMessageArrived(message) {
   const timeString = currentTime.toLocaleTimeString() + ', ' + currentTime.toDateString();
 
   if (message.destinationName === "ece445/rh") {
-    addRakingMessage(`Raking completed at ${timeString}`);
+    if (message.payloadString === "manual") {
+        addRakingMessage(`${timeString} (manually triggered)`);
+    } else if (message.payloadString === "odor") {
+        addRakingMessage(`${timeString} (auto triggered by odor)`);
+    } else {
+        addRakingMessage(`${timeString} (triggered by unknown event)`)
+    }
   } else if (message.destinationName === "ece445/odor") {
     updateOdorLevel(`${message.payloadString}`);
   } else if (message.destinationName === "ece445/weight") {
