@@ -161,7 +161,7 @@ function onMessageArrived(message) {
     if (message.payloadString === "manual") {
         addRakingMessage(`${timeString} (manually triggered)`);
     } else if (message.payloadString === "odor") {
-        addRakingMessage(`${timeString} (auto triggered by odor)`);
+        addRakingMessage(`${timeString} (auto triggered after usage)`);
     } else {
         addRakingMessage(`${timeString} (triggered by unknown event)`)
     }
